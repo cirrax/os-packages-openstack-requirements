@@ -1,0 +1,55 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+DEB_SOURCE_PACKAGE=$(strip $(shell egrep '^Source: ' debian/control | cut -f 2 -d ':'))
+
+# see FEATURE AREAS in dpkg-buildflags(1)
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# see ENVIRONMENT in dpkg-buildflags(1)
+# package maintainers to append CFLAGS
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+# package maintainers to append LDFLAGS
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+DISTRI=stretch
+MAJREL=mitaka
+
+# prepare for new major release
+new-majrel: 
+	@ if [ "$(DEB_SOURCE_PACKAGE)" = "os-requirements-$(MAJREL)" ]; then \
+		echo 'set MAJREL in debian/rules to new release name (current: $(MAJREL))' ; exit 1 ;\
+	  fi
+	rm -f debian/changelog debian/*.install debian/gbp.conf
+	sed 's/__MAJREL__/$(MAJREL)/g' debian/gbp.conf.in |sed 's/__DISTRI__/$(DISTRI)/g'   > debian/gbp.conf
+	sed 's/__MAJREL__/$(MAJREL)/g' debian/.update.sh.in |sed 's/__DISTRI__/$(DISTRI)/g' > debian/.update.sh
+	sed 's/__MAJREL__/$(MAJREL)/' debian/control.in                                     > debian/control 
+	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-builddep.install.in            > debian/os-requirements-$(MAJREL)-builddep.install
+	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-dep.install.in                 > debian/os-requirements-$(MAJREL)-dep.install
+	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-pipcache.install.in            > debian/os-requirements-$(MAJREL)-pipcache.install
+	dch --create --package os-requirements-mitaka --newversion 0.mitaka.1 'initial for openstack $(MAJREL)'
+
+
+
+PIPINSTDIR=$(CURDIR)/debian/os-requirements-$(MAJREL)-pipcache/usr/share/os-requirements-$(MAJREL)-pipcache
+
+%:
+	dh $@ 
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	mkdir -p  $(PIPINSTDIR)
+	cp upper-constraints.txt $(PIPINSTDIR)/os-upper-constraints.txt
+	cp debian/additional-packages.txt $(PIPINSTDIR)/additional-packages.txt
+	pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/os-upper-constraints.txt
+	pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/additional-packages.txt
+ 
+# dh_make generated override targets
+# This is example for Cmake (See https://bugs.debian.org/641051 )
+#override_dh_auto_configure:
+#	dh_auto_configure -- #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
+

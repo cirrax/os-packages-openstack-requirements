@@ -1,0 +1,7 @@
+The Debian Package openstack-requirements
+----------------------------
+
+Package for openstack requirements per os major-release (mitaka, newton etc).
+Includes also a pip cache (downloaded requirements for offline building of openstack virtualenvs.
+
+ -- Benedikt Trefzer <benedikt.trefzer@cirrax.com>  Fri, 24 Feb 2017 20:41:36 +0100
