@@ -1,12 +1,5 @@
-os-requirements-mitaka (0.mitaka.2) unstable; urgency=medium
+os-requirements-newton (0.newton.1) UNRELEASED; urgency=medium
 
-  * move pipcache into cache subdirectory
-  * add requirements for build
+  * initial for openstack newton
 
- -- Benedikt Trefzer <benedikt.trefzer@cirrax.com>  Mon, 27 Feb 2017 16:00:48 +0100
-
-os-requirements-mitaka (0.mitaka.1) unstable; urgency=medium
-
-  * initial for openstack mitaka
-
- -- Benedikt Trefzer <benedikt.trefzer@cirrax.com>  Sat, 25 Feb 2017 15:56:56 +0100
+ -- Benedikt Trefzer <benedikt.trefzer@cirrax.com>  Tue, 09 May 2017 22:14:45 +0200

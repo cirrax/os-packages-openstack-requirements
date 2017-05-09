@@ -1,4 +1,4 @@
-Source: os-requirements-mitaka
+Source: os-requirements-newton
 Section: python
 Priority: optional
 Maintainer: Benedikt Trefzer <benedikt.trefzer@cirrax.com>
@@ -28,15 +28,15 @@ Build-Depends: debhelper (>= 9),
 Standards-Version: 3.9.8
 Homepage: https://github.com/openstack/requirements
 
-Package: os-requirements-mitaka-dep
+Package: os-requirements-newton-dep
 Architecture: any
 Depends:       ${misc:Depends},
-Description: mitaka dependencies for virtualenv openstack packages
+Description: newton dependencies for virtualenv openstack packages
  dependency package to install a virtualenv with openstack requirements
  . 
- These are the dependencies for mitaka openstack releases
+ These are the dependencies for newton openstack releases
 
-Package: os-requirements-mitaka-builddep
+Package: os-requirements-newton-builddep
 Architecture: any
 Depends:       ${misc:Depends},
                default-libmysqlclient-dev,
@@ -59,16 +59,16 @@ Depends:       ${misc:Depends},
                pypy-dev,
                uuid-dev,
                swig
-Description: mitaka build dependencies for virtualenv openstack packages
+Description: newton build dependencies for virtualenv openstack packages
  dependency package to buils a virtualenv with openstack requirements
  . 
- These are the dependencies for mitaka openstack releases
+ These are the dependencies for newton openstack releases
 
-Package: os-requirements-mitaka-pipcache
+Package: os-requirements-newton-pipcache
 Architecture: any
 Depends: ${misc:Depends}
-Description: mitaka pip downloads for virtualenv
+Description: newton pip downloads for virtualenv
  pip downloads for global openstack requirements.
  This is only needed for packaging the openstack virtualenv.
  .
- The requirements are for mitaka openstack releases
+ The requirements are for newton openstack releases
