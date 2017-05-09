@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DISTRI='stretch'
-MAJREL='newton'
+MAJREL='ocata'
 
 if  [ `git rev-parse --abbrev-ref HEAD` != "debian/${DISTRI}-${MAJREL}" ]; then
        echo 'not on correct branch'

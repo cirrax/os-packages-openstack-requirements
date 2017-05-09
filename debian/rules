@@ -15,7 +15,7 @@ DEB_SOURCE_PACKAGE=$(strip $(shell egrep '^Source: ' debian/control | cut -f 2 -
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 DISTRI=stretch
-MAJREL=newton
+MAJREL=ocata
 
 # prepare for new major release
 new-majrel: 

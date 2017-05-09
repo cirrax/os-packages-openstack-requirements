@@ -1,4 +1,4 @@
-Source: os-requirements-newton
+Source: os-requirements-ocata
 Section: python
 Priority: optional
 Maintainer: Benedikt Trefzer <benedikt.trefzer@cirrax.com>
@@ -28,15 +28,15 @@ Build-Depends: debhelper (>= 9),
 Standards-Version: 3.9.8
 Homepage: https://github.com/openstack/requirements
 
-Package: os-requirements-newton-dep
+Package: os-requirements-ocata-dep
 Architecture: any
 Depends:       ${misc:Depends},
-Description: newton dependencies for virtualenv openstack packages
+Description: ocata dependencies for virtualenv openstack packages
  dependency package to install a virtualenv with openstack requirements
  . 
- These are the dependencies for newton openstack releases
+ These are the dependencies for ocata openstack releases
 
-Package: os-requirements-newton-builddep
+Package: os-requirements-ocata-builddep
 Architecture: any
 Depends:       ${misc:Depends},
                default-libmysqlclient-dev,
@@ -59,16 +59,16 @@ Depends:       ${misc:Depends},
                pypy-dev,
                uuid-dev,
                swig
-Description: newton build dependencies for virtualenv openstack packages
+Description: ocata build dependencies for virtualenv openstack packages
  dependency package to buils a virtualenv with openstack requirements
  . 
- These are the dependencies for newton openstack releases
+ These are the dependencies for ocata openstack releases
 
-Package: os-requirements-newton-pipcache
+Package: os-requirements-ocata-pipcache
 Architecture: any
 Depends: ${misc:Depends}
-Description: newton pip downloads for virtualenv
+Description: ocata pip downloads for virtualenv
  pip downloads for global openstack requirements.
  This is only needed for packaging the openstack virtualenv.
  .
- The requirements are for newton openstack releases
+ The requirements are for ocata openstack releases
