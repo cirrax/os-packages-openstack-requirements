@@ -23,6 +23,9 @@ new-majrel:
 		echo 'set MAJREL in debian/rules to new release name (current: $(MAJREL))' ; exit 1 ;\
 	  fi
 	git checkout master -b debian/$(DISTRI)-$(MAJREL)
+	git remote add upstream  https://github.com/openstack/requirements
+	git fetch --all
+	git merge upstream/stable/$(MAJREL) --allow-unrelated-histories -m 'initial merge of $(MAJREL)'
 	rm -f debian/changelog debian/*.install debian/gbp.conf
 	sed 's/__MAJREL__/$(MAJREL)/g' debian/gbp.conf.in |sed 's/__DISTRI__/$(DISTRI)/g'   > debian/gbp.conf
 	sed 's/__MAJREL__/$(MAJREL)/g' debian/.update.sh.in |sed 's/__DISTRI__/$(DISTRI)/g' > debian/.update.sh
