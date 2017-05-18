@@ -22,6 +22,7 @@ new-majrel:
 	@ if [ "$(DEB_SOURCE_PACKAGE)" = "os-requirements-$(MAJREL)" ]; then \
 		echo 'set MAJREL in debian/rules to new release name (current: $(MAJREL))' ; exit 1 ;\
 	  fi
+	git checkout master -b debian/$(DISTRI)-$(MAJREL)
 	rm -f debian/changelog debian/*.install debian/gbp.conf
 	sed 's/__MAJREL__/$(MAJREL)/g' debian/gbp.conf.in |sed 's/__DISTRI__/$(DISTRI)/g'   > debian/gbp.conf
 	sed 's/__MAJREL__/$(MAJREL)/g' debian/.update.sh.in |sed 's/__DISTRI__/$(DISTRI)/g' > debian/.update.sh
