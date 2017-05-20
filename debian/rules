@@ -28,7 +28,8 @@ new-majrel:
 	git merge upstream/stable/$(MAJREL) --allow-unrelated-histories -m 'initial merge of $(MAJREL)'
 	rm -f debian/changelog debian/*.install debian/gbp.conf
 	sed 's/__MAJREL__/$(MAJREL)/g' debian/gbp.conf.in |sed 's/__DISTRI__/$(DISTRI)/g'   > debian/gbp.conf
-	sed 's/__MAJREL__/$(MAJREL)/g' debian/.update.sh.in |sed 's/__DISTRI__/$(DISTRI)/g' > debian/.update.sh
+	sed 's/__MAJREL__/$(MAJREL)/g' debian/update.sh.in |sed 's/__DISTRI__/$(DISTRI)/g' > debian/update.sh
+	chmod +x debian/update.sh
 	sed 's/__MAJREL__/$(MAJREL)/' debian/control.in                                     > debian/control 
 	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-builddep.install.in            > debian/os-requirements-$(MAJREL)-builddep.install
 	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-dep.install.in                 > debian/os-requirements-$(MAJREL)-dep.install
