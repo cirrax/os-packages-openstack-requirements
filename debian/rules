@@ -15,7 +15,7 @@ DEB_SOURCE_PACKAGE=$(strip $(shell egrep '^Source: ' debian/control | cut -f 2 -
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 DISTRI=stretch
-MAJREL=ocata
+MAJREL=mitaka
 
 # prepare for new major release
 new-majrel: 
@@ -34,7 +34,7 @@ new-majrel:
 	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-builddep.install.in            > debian/os-requirements-$(MAJREL)-builddep.install
 	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-dep.install.in                 > debian/os-requirements-$(MAJREL)-dep.install
 	sed 's/__MAJREL__/$(MAJREL)/' debian/os-requirements-pipcache.install.in            > debian/os-requirements-$(MAJREL)-pipcache.install
-	dch --create --package os-requirements-$(MAJREL) --newversion 0.$(MAJREL).0 'initial for openstack $(MAJREL)'
+	dch --distribution unstable --create --package os-requirements-$(MAJREL) --newversion 0.$(MAJREL).0 'initial for openstack $(MAJREL)'
 	git add .
 	git commit -m 'add generated inital debian files'
 	git tag debian/0.$(MAJREL).0
