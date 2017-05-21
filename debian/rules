@@ -37,7 +37,7 @@ new-majrel:
 	dch --distribution unstable --create --package os-requirements-$(MAJREL) --newversion 0.$(MAJREL).0 'initial for openstack $(MAJREL)'
 	git add .
 	git commit -m 'add generated inital debian files'
-	git tag debian/0.$(MAJREL).0
+	git tag debian/0.$(MAJREL).0 -m 'initial $(MAJREL) release'
 
 
 
