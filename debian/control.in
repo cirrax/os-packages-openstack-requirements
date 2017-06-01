@@ -60,7 +60,8 @@ Depends:       ${misc:Depends},
                pypy,
                pypy-dev,
                uuid-dev,
-               swig
+               swig,
+               python-six,
 Description: __MAJREL__ build dependencies for virtualenv openstack packages
  dependency package to buils a virtualenv with openstack requirements
  . 
