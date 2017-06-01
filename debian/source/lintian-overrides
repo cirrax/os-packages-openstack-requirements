@@ -1,0 +1,5 @@
+
+# we do not care about NMU ...
+venv-keystone source: changelog-should-mention-nmu
+venv-keystone source: source-nmu-has-incorrect-version-number
+
