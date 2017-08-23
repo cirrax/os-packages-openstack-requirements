@@ -7,7 +7,7 @@ if  [ `git rev-parse --abbrev-ref HEAD` != "debian/${DISTRI}-${MAJREL}" ]; then
        echo 'not on correct branch'
        exit 1
 fi
-git remote add upstream  https://github.com/openstack/requirements
+git remote add upstream  https://git.openstack.org/openstack/requirements.git
 
 git fetch --all
 
