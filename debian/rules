@@ -55,6 +55,11 @@ override_dh_auto_install:
 	# use same libvirt version as debian:
 	sed -i 's/^libvirt-python===.*/libvirt-python===3.0.0/' $(PIPINSTDIR)/os-upper-constraints.txt
 	cp debian/additional-packages.txt $(PIPINSTDIR)/additional-packages.txt
-	pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/os-upper-constraints.txt
-	pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/additional-packages.txt
+	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/os-upper-constraints.txt
+	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/additional-packages.txt
+	# build wheels instead of download
+	# first build scipy
+	( unset LDFLAGS; unset FFLAGS;  pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -c $(PIPINSTDIR)/os-upper-constraints.txt scipy )
+	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/os-upper-constraints.txt
+	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/additional-packages.txt
  
