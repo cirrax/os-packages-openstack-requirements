@@ -63,4 +63,5 @@ override_dh_auto_install:
 	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/os-upper-constraints.txt
 	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/additional-packages.txt
 	# install patch script
-	cp $(CURDIR)/debian/patch-venv.sh $(CURDIR)/debian/os-requirements-$(MAJREL)-dep/usr/sbin/patch-venv-$(MAJREL).sh
+	mkdir -p $(CURDIR)/debian/os-requirements-$(MAJREL)-builddep/usr/sbin
+	cp $(CURDIR)/debian/patch-venv.sh $(CURDIR)/debian/os-requirements-$(MAJREL)-builddep/usr/sbin/patch-venv-$(MAJREL).sh
