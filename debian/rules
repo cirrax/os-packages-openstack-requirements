@@ -62,4 +62,5 @@ override_dh_auto_install:
 	( unset LDFLAGS; unset FFLAGS;  pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -c $(PIPINSTDIR)/os-upper-constraints.txt scipy )
 	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/os-upper-constraints.txt
 	pip wheel -w $(PIPINSTDIR)/cache -f $(PIPINSTDIR)/cache --use-wheel  -r $(PIPINSTDIR)/additional-packages.txt
- 
+	# install patch script
+	cp $(CURDIR)/debian/patch-venv.sh $(CURDIR)/debian/os-requirements-$(MAJREL)-dep/usr/sbin/patch-venv-$(MAJREL).sh
