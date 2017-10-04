@@ -54,7 +54,8 @@ override_dh_auto_install:
 	cp upper-constraints.txt $(PIPINSTDIR)/os-upper-constraints.txt
 	# use same libvirt version as debian:
 	sed -i 's/^libvirt-python===.*/libvirt-python===3.0.0/' $(PIPINSTDIR)/os-upper-constraints.txt
-	cp debian/additional-packages.txt $(PIPINSTDIR)/additional-packages.txt
+	cp debian/additional-packages.txt                    $(PIPINSTDIR)/additional-packages.txt
+	cp debian/exclude-file-from-precompile-python2.sed   $(PIPINSTDIR)/exclude-file-from-precompile-python2.sed
 	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/os-upper-constraints.txt
 	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/additional-packages.txt
 	# build wheels instead of download
