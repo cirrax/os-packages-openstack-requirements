@@ -55,7 +55,6 @@ override_dh_auto_install:
 	# use same libvirt version as debian:
 	sed -i 's/^libvirt-python===.*/libvirt-python===3.0.0/' $(PIPINSTDIR)/os-upper-constraints.txt
 	cp debian/additional-packages.txt                    $(PIPINSTDIR)/additional-packages.txt
-	cp debian/exclude-file-from-precompile-python2.sed   $(PIPINSTDIR)/exclude-file-from-precompile-python2.sed
 	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/os-upper-constraints.txt
 	#pip download -d $(PIPINSTDIR)/cache -r $(PIPINSTDIR)/additional-packages.txt
 	# build wheels instead of download
@@ -66,3 +65,5 @@ override_dh_auto_install:
 	# install patch script
 	mkdir -p $(CURDIR)/debian/os-requirements-$(MAJREL)-builddep/usr/sbin
 	cp $(CURDIR)/debian/patch-venv.sh $(CURDIR)/debian/os-requirements-$(MAJREL)-builddep/usr/sbin/patch-venv-$(MAJREL).sh
+	# copy some helper scripts
+	cp -r debian/helpers   $(PIPINSTDIR)/
