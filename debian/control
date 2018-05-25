@@ -1,0 +1,88 @@
+Source: os-requirements-__MAJREL__
+Section: python
+Priority: optional
+Maintainer: Benedikt Trefzer <benedikt.trefzer@cirrax.com>
+Build-Depends: debhelper (>= 9),
+               python-no-manylinux1,
+               python-wheel,
+               python-pip,
+               python-setuptools,
+               python-all-dev,
+               python3-all-dev,
+               dh-python,
+               default-libmysqlclient-dev,
+               libkrb5-dev,
+               libvirt-dev,
+               liberasurecode-dev,
+               libopenblas-dev,
+               libblas-dev,
+               libssl1.0-dev,
+               libjpeg-dev,
+               libxml2-dev,
+               libxslt1-dev,
+               libpq-dev,
+               libnspr4-dev,
+               libnss3-dev,
+               libsqlite3-dev,
+               libffi-dev,
+               libldap2-dev,
+               libsasl2-dev,
+ 	       libsystemd-dev,
+               python-scipy,
+               python-numpy,
+               pkg-config,
+               ccache,
+               pypy,
+               pypy-dev,
+               uuid-dev,
+               swig,
+Standards-Version: 3.9.8
+Homepage: https://github.com/openstack/requirements
+
+Package: os-requirements-__MAJREL__-dep
+Architecture: any
+Depends:       ${misc:Depends},
+Description: __MAJREL__ dependencies for virtualenv openstack packages
+ dependency package to install a virtualenv with openstack requirements
+ . 
+ These are the dependencies for __MAJREL__ openstack releases
+
+Package: os-requirements-__MAJREL__-builddep
+Architecture: any
+Depends:       ${misc:Depends},
+               default-libmysqlclient-dev,
+               libssl1.0-dev,
+               libkrb5-dev,
+               python-all-dev,
+               python3-all-dev,
+               libvirt-dev,
+               libxml2-dev,
+               libxslt1-dev,
+               libpq-dev,
+               libnspr4-dev,
+               libnss3-dev,
+               libopenblas-base,
+               pkg-config,
+               libsqlite3-dev,
+               libffi-dev,
+               libldap2-dev,
+               libsasl2-dev,
+               ccache,
+               pypy,
+               pypy-dev,
+               uuid-dev,
+               swig,
+               python-six,
+Description: __MAJREL__ build dependencies for virtualenv openstack packages
+ dependency package to buils a virtualenv with openstack requirements
+ . 
+ These are the dependencies for __MAJREL__ openstack releases
+
+Package: os-requirements-__MAJREL__-pipcache
+Architecture: any
+Depends: ${misc:Depends}
+Description: __MAJREL__ pip downloads for virtualenv
+ pip downloads for global openstack requirements.
+ This is only needed for packaging the openstack virtualenv.
+ .
+ The requirements are for __MAJREL__ openstack releases
