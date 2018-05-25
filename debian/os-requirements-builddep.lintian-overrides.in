@@ -1,0 +1,2 @@
+script-with-language-extension usr/sbin/patch-venv-queens.sh
+binary-without-manpage         usr/sbin/patch-venv-queens.sh
